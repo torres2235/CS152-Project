@@ -72,9 +72,9 @@ false		{printf("FALSE\n"); curPos += strlen(yytext);}
 
 [0-9]+					{printf("NUMBER %s\n",yytext); curPos += strlen(yytext);}
 
-[0-9|_][a-zA-Z0-9|_]*[a-zA-Z0-9|_]      {printf("Error at line %d, column %d: Identifier \"%s\" must begin with a letter\n",curLine,curPos,yytext); curPos += strlen(yytext);exit(0);} 
-[a-zA-Z][a-zA-Z0-9|_]*[_]               {printf("Error at line %d, column %d: Identifier \"%s\" cannot end with an underscore\n",curLine,curPos,yytext); curPos += strlen(yytext);exit(0);} 
-[a-zA-Z][a-zA-Z0-9|_]*[a-zA-Z0-9]	{printf("IDENT %s\n", yytext); curPos += strlen(yytext);/*Multi letter Identifier*/} 
+[0-9_][a-zA-Z0-9_]*[a-zA-Z0-9_]      {printf("Error at line %d, column %d: Identifier \"%s\" must begin with a letter\n",curLine,curPos,yytext); curPos += strlen(yytext);exit(0);} 
+[a-zA-Z][a-zA-Z0-9_]*[_]               {printf("Error at line %d, column %d: Identifier \"%s\" cannot end with an underscore\n",curLine,curPos,yytext); curPos += strlen(yytext);exit(0);} 
+[a-zA-Z][a-zA-Z0-9_]*[a-zA-Z0-9]	{printf("IDENT %s\n", yytext); curPos += strlen(yytext);/*Multi letter Identifier*/} 
 [a-zA-Z][a-zA-Z0-9]*			{printf("IDENT %s\n", yytext); curPos += strlen(yytext);/*Single Letter Identifier and Multi letter Identifier with underscores */}
 
 
