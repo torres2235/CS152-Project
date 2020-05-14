@@ -18,7 +18,7 @@ void yyerror(const char *msg);
 
 %token IDENT NUMBER
 
-%start program
+%start program comp
 
 %%
 program : functions
@@ -35,6 +35,25 @@ function : FUNCTION IDENT SEMICOLON
 	   {printf("function -> FUNCTION IDENT SEMICOLON\n");}
 	 ;
 
+
+comp : EQ
+       {printf("comp -> EQ\n");}
+     |
+       NEQ
+       {printf("comp -> NEQ\n");}
+     |
+       LT
+       {printf("comp -> LT\n");}
+     |
+       GT
+       {printf("comp -> GT\n");}
+     |
+       LTE
+       {printf("comp -> LTE\n");}
+     |
+       GTE
+       {printf("comp -> GTE\n");}
+     ;
 
 %%
 
