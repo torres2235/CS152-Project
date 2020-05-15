@@ -25,7 +25,7 @@ program : functions
 	  {printf("program -> functions\n");}
 	;
 
-functions : /*epsilon*/
+functions : /*epsilon*/ 
             {printf("functions -> epsilon\n");}
 	  | function functions
             {printf("functions -> function Functions\n");}
@@ -44,8 +44,11 @@ declarations : /*epsilon*/
 declaration : identifier COLON array INTEGER
 	      {printf("declaration -> identifier COLON array INTEGER");}
 	    ;
-identifier : IDENT comma
-	     {printf("identifier -> IDENT comma");}
+
+identifier : /*epsilon*/
+	     {printf("identifier -> epsilon");}
+	   |  IDENT COMMA identifier
+	     {printf("identifier -> IDENT COMMA identifer");}
 	   ;
 
 comma : /*epsilon*/
@@ -146,8 +149,9 @@ comp : EQ
 
 var : IDENT
       {printf("var -> IDENT");}
-    | IDENT L_SQUARE_BRACKET expression R_SQUARE_BRACKET brack_exp
+    /*| IDENT L_SQUARE_BRACKET expression R_SQUARE_BRACKET brack_exp
       {printf("var -> IDENT L_SQUARE_BRACKET expression R_SQUARE_BRACKET brack_exp");}
+    */
     ;
 
 brack_exp : /*epsilon*/
