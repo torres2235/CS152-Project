@@ -5,6 +5,11 @@ extern int curLine;
 void yyerror(const char *msg);
 %}
 
+%union{ char *cVal; int iVal;}
+
+%token <iVal> NUMBER
+%token <cVal> IDENT
+ 
 %token FUNCTION BEGIN_PARAMS END_PARAMS BEGIN_LOCALS END_LOCALS BEGIN_BODY END_BODY
 %token INTEGER ARRAY OF IF THEN ENDIF ELSE WHILE DO BEGINLOOP ENDLOOP CONTINUE
 %token READ WRITE AND OR NOT TRUE FALSE RETURN FOR
@@ -15,8 +20,6 @@ void yyerror(const char *msg);
 
 %token SEMICOLON COLON COMMA PERIOD L_PAREN R_PAREN  L_SQUARE_BRACKET
 %token R_SQUARE_BRACKET ASSIGN
-
-%token IDENT NUMBER
 
 %start program
 

@@ -73,12 +73,12 @@ for		{curPos += strlen(yytext); return FOR;}
 ":="		{curPos += strlen(yytext); return ASSIGN;}
 
 
-[0-9]+					{curPos += strlen(yytext); return NUMBER;}
+[0-9]+					{curPos += strlen(yytext); yylval.iVal  = atoi(yytext); return NUMBER;}
 
 [0-9_][a-zA-Z0-9_]*[a-zA-Z0-9_]      {printf("Error at line %d, column %d: Identifier \"%s\" must begin with a letter\n",curLine,curPos,yytext); curPos += strlen(yytext);exit(0);} 
 [a-zA-Z][a-zA-Z0-9_]*[_]               {printf("Error at line %d, column %d: Identifier \"%s\" cannot end with an underscore\n",curLine,curPos,yytext); curPos += strlen(yytext);exit(0);} 
-[a-zA-Z][a-zA-Z0-9_]*[a-zA-Z0-9]	{curPos += strlen(yytext); return IDENT;/*Multi letter Identifier*/} 
-[a-zA-Z][a-zA-Z0-9]*			{curPos += strlen(yytext); return IDENT;/*Single Letter Identifier and Multi letter Identifier with underscores */}
+[a-zA-Z][a-zA-Z0-9_]*[a-zA-Z0-9]	{curPos += strlen(yytext); yylval.cVal = yytext; return IDENT;/*Multi letter Identifier*/} 
+[a-zA-Z][a-zA-Z0-9]*			{curPos += strlen(yytext); yylval.cVal =  yytext; return IDENT;/*Single Letter Identifier and Multi letter Identifier with underscores */}
 
 
 [ ]         	curPos++; 
