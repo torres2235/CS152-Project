@@ -38,7 +38,8 @@ or		{curPos += strlen(yytext); return OR;}
 not		{curPos += strlen(yytext); return NOT;}
 true		{curPos += strlen(yytext); return TRUE;}
 false		{curPos += strlen(yytext); return FALSE;}
-		
+return		{curPos += strlen(yytext); return RETURN;}
+for		{curPos += strlen(yytext); return FOR;}
 
 "-"		{curPos += strlen(yytext); return SUB;}
 "+"		{curPos += strlen(yytext); return ADD;}
